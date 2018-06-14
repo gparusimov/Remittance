@@ -34,13 +34,13 @@
             require(_availableBlocks != 0);
             require(_availableBlocks < maxDeadlineBlocks);
             require(recipient != 0);
-            remittances[_passwordHash].push(RemittanceStruct({
+            remittances[_passwordHash] = new RemittanceStruct({
                 receiver: _recipient,
                 sender: msg.sender,
                 remitAmount: msg.value,
                 expirationBlock: block.number + _availableBlocks,
                 passwordHash: _passwordHash
-                }));
+                });
 
             emit LogRemittance(_recipient, _passwordHash, _availableBlocks, msg.value);
         }
