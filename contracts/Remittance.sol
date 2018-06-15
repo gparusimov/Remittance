@@ -1,4 +1,4 @@
-    pragma solidity ^0.4.18;
+    pragma solidity ^0.4.21;
 
     import "./Stoppable.sol";
 
@@ -15,7 +15,7 @@
         mapping(bytes32 => RemittanceStruct) public remittances;
         uint public maxDeadlineBlocks = 30;
 
-        event LogRemittance(address _reciever, bytes32 _passwordHash, uint _availableBlocks, uint _amount);
+        event LogRemittance(address _reciever, uint _availableBlocks, uint _amount);
         event LogWithdraw(address reciever, uint amount);
         event LogKill(address indexed owner);
         event LogAmountBack(uint claimAmount);
@@ -26,13 +26,19 @@
 
         }
 
-        function remittance(address _recipient, bytes32 _passwordHash, uint _availableBlocks)
+        function remittance(address _recipient, string _password, uint _availableBlocks)
         external
         payable
         {
+
             require(_availableBlocks != 0);
             require(_availableBlocks <= maxDeadlineBlocks);
             require(recipient != 0);
+
+            bytes32 passwordHash = hashForPassword(_recipient, _password);
+
+            require(remittances[passwordHash] == 0);
+
             remittances[_passwordHash] = RemittanceStruct({
                 receiver: _recipient,
                 sender: msg.sender,
@@ -82,11 +88,11 @@
             return true;
         }
 
-        function hashForPassword(address _remitter, string _password)
+        function hashForPassword(address _recipient, string _password)
         pure
         public
         returns (bytes32 hashedOutput)
         {
-            return keccak256(_remitter, _password);
+            return keccak256(_recipient, _password);
         }
     }
