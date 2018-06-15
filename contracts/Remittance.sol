@@ -31,7 +31,7 @@
         payable
         {
             require(_availableBlocks != 0);
-            require(_availableBlocks < maxDeadlineBlocks);
+            require(_availableBlocks <= maxDeadlineBlocks);
             require(recipient != 0);
             remittances[_passwordHash] = RemittanceStruct({
                 receiver: _recipient,
@@ -43,16 +43,17 @@
             emit LogRemittance(_recipient, _availableBlocks, msg.value);
         }
 
-        function withdraw(string _password)
+        function withdraw(address _recipient, string _password)
         onlyIfRunning
         external
         payable
         returns(bool)
         {
-            bytes32 passHash = hashForPassword(msg.sender,_password);
+            bytes32 passHash = hashForPassword(_recipient, _password);
             RemittanceStruct memory remittance = remittances[passHash];
             uint withdrawalAmount =remittance.remitAmount;
 
+            require(remittance.receiver == _recipient);
             require(remittance.expirationBlock >= block.number);
             require(withdrawalAmount!=0);
 
@@ -63,16 +64,15 @@
             return true;
         }
 
-        function claimAmountBack(string _password)
-        onlyIfRunning
+        function claimAmountBack(bytes32 _passHash)
         external
         returns (bool success)
         {
-            bytes32 passHash = hashForPassword(msg.sender,_password);
-            RemittanceStruct memory remittance = remittances[passHash];
+            RemittanceStruct memory remittance = remittances[_passHash];
             uint claimAmount =remittance.remitAmount;
 
             require(remittance.expirationBlock < block.number);
+            require(remittance.sender == msg.sender);
             require(claimAmount > 0);
 
             remittance.remitAmount = 0;

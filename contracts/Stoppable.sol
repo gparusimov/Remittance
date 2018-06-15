@@ -3,11 +3,11 @@ pragma solidity ^0.4.18;
 import "./Owned.sol";
 
 contract Stoppable is Owned {
-    bool private isStopping;
+    bool private isStopped;
 
     modifier onlyIfRunning()
     {
-        require (!isStopping);
+        require (!isStopped);
         _;
     }
 
@@ -23,10 +23,10 @@ contract Stoppable is Owned {
 
     function stopContract()
     onlyOwner
-    public
+    onlyIfRunning
     returns (bool _success)
     {
-        isStopping = true;
+        isStopped = true;
 
         LogStoppableStopContract (msg.sender);
         return true;
@@ -34,10 +34,10 @@ contract Stoppable is Owned {
 
     function resumeContract()
     onlyOwner
-    public
     returns (bool _success)
     {
-        isStopping = false;
+        require(isStopped);
+        isStopped = false;
 
         LogStoppableResumeContract(msg.sender);
         return true;
@@ -46,8 +46,9 @@ contract Stoppable is Owned {
     function isStopped()
     public
     constant
-    returns (bool _isStopping)
+    pure
+    returns (bool _isStopped)
     {
-        return isStopping;
+        return isStopped;
     }
 }
