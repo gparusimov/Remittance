@@ -4,16 +4,29 @@ contract Owned {
 
 	address public owner;
 
-	modifier onlyOwner
+    event LogChangeOwner(address sender, address newOwner);
+
+    modifier onlyOwner
 	{
-		require(msg.sender == owner);
-		_;
+        require(msg.sender == owner);
+        _;
 	}
 
 	function Owned()
-	 public
+    public
 	{
-      owner = msg.sender;
-	}
+        owner = msg.sender;
+    }
+
+    function changeOwner(address newOwner)
+    public
+    onlyOwner
+    returns(bool success)
+    {
+        require(newOwner!=0);
+        owner = newOwner;
+        emit LogChangeOwner(msg.sender, newOwner);
+        return true;
+    }
 
 }
