@@ -26,7 +26,7 @@
 
         }
 
-        function remittance(address _recipient, string _password, uint _availableBlocks)
+        function remittance(address _recipient, bytes32 _passwordHash, uint _availableBlocks)
         external
         payable
         {
@@ -34,10 +34,7 @@
             require(_availableBlocks != 0);
             require(_availableBlocks <= maxDeadlineBlocks);
             require(recipient != 0);
-
-            bytes32 passwordHash = hashForPassword(_recipient, _password);
-
-            require(remittances[passwordHash] == 0);
+            require(remittances[_passwordHash] == 0);
 
             remittances[_passwordHash] = RemittanceStruct({
                 receiver: _recipient,
