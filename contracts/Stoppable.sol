@@ -11,14 +11,15 @@ contract Stoppable is Owned {
         _;
     }
 
-    event LogStoppableConstruct(address _sender);
+    event LogNewStoppableConstruct(address _sender);
     event LogStoppableStopContract(address _sender);
     event LogStoppableResumeContract(address _sender);
 
-    function Stoppable()
+    constructor()
     public
     {
-        LogNewStoppableConstruct(msg.sender);
+        isStopped = false;
+        emit LogNewStoppableConstruct(msg.sender);
     }
 
     function stopContract()
@@ -28,7 +29,7 @@ contract Stoppable is Owned {
     {
         isStopped = true;
 
-        LogStoppableStopContract (msg.sender);
+        emit LogStoppableStopContract (msg.sender);
         return true;
     }
 
@@ -39,14 +40,13 @@ contract Stoppable is Owned {
         require(isStopped);
         isStopped = false;
 
-        LogStoppableResumeContract(msg.sender);
+        emit LogStoppableResumeContract(msg.sender);
         return true;
     }
 
-    function isStopped()
+    function isStoppedState()
     public
     constant
-    pure
     returns (bool _isStopped)
     {
         return isStopped;

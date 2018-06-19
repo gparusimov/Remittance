@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="584ac18d-aadd-4ec3-ad20-cd746729ba7e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/contracts/Owned.sol" afterPath="$PROJECT_DIR$/contracts/Owned.sol" />
       <change beforePath="$PROJECT_DIR$/contracts/Remittance.sol" afterPath="$PROJECT_DIR$/contracts/Remittance.sol" />
+      <change beforePath="$PROJECT_DIR$/contracts/Stoppable.sol" afterPath="$PROJECT_DIR$/contracts/Stoppable.sol" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,21 +78,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Remittance.sol" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Remittance.sol" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/contracts/Remittance.sol">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+            <state relative-caret-position="648">
+              <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Stoppable.sol" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Stoppable.sol" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/contracts/Stoppable.sol">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+            <state relative-caret-position="972">
+              <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -109,8 +111,8 @@
       <file leaf-file-name="Owned.sol" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/contracts/Owned.sol">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="18" />
+            <state relative-caret-position="558">
+              <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -136,9 +138,9 @@
       <list>
         <option value="$PROJECT_DIR$/migrations/2_deploy_contracts.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/contracts/Stoppable.sol" />
-        <option value="$PROJECT_DIR$/contracts/Owned.sol" />
         <option value="$PROJECT_DIR$/contracts/Remittance.sol" />
+        <option value="$PROJECT_DIR$/contracts/Owned.sol" />
+        <option value="$PROJECT_DIR$/contracts/Stoppable.sol" />
       </list>
     </option>
   </component>
@@ -331,12 +333,12 @@
       <updated>1528484118739</updated>
       <workItem from="1528484121044" duration="1502000" />
       <workItem from="1528997451221" duration="3631000" />
-      <workItem from="1529001393155" duration="21034000" />
+      <workItem from="1529001393155" duration="21678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26167000" />
+    <option name="totallyTimeSpent" value="26811000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
@@ -622,26 +624,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contracts/Stoppable.sol">
+    <entry file="file://$PROJECT_DIR$/contracts/Remittance.sol">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
+        <state relative-caret-position="648">
+          <caret line="45" column="8" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="45" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/contracts/Owned.sol">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="18" />
+        <state relative-caret-position="558">
+          <caret line="31" column="1" lean-forward="false" selection-start-line="31" selection-start-column="1" selection-end-line="31" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/contracts/Remittance.sol">
+    <entry file="file://$PROJECT_DIR$/contracts/Stoppable.sol">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="35" column="36" lean-forward="false" selection-start-line="35" selection-start-column="36" selection-end-line="35" selection-end-column="36" />
+        <state relative-caret-position="972">
+          <caret line="54" column="0" lean-forward="true" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
           <folding />
         </state>
       </provider>
