@@ -1,13 +1,14 @@
 {
-  "name": "splitter",
-  "version": "0.0.1",
-  "description": "Example tests sans Truffle tests",
+  "name": "Remittance",
+  "version": "0.0.3",
+  "description": "Remittance",
   "scripts": {
     "test": "mocha"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "truffle": "^4.1.0",
+    "npm": "^6.1.0",
+    "truffle": "^4.1.11",
     "web3": "0.20.4"
   },
   "devDependencies": {
