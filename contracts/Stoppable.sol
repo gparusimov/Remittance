@@ -23,6 +23,7 @@ contract Stoppable is Owned {
     }
 
     function stopContract()
+    public
     onlyOwner
     onlyIfRunning
     returns (bool _success)
@@ -34,6 +35,7 @@ contract Stoppable is Owned {
     }
 
     function resumeContract()
+    public
     onlyOwner
     returns (bool _success)
     {
@@ -46,7 +48,7 @@ contract Stoppable is Owned {
 
     function isStoppedState()
     public
-    constant
+    view
     returns (bool _isStopped)
     {
         return isStopped;

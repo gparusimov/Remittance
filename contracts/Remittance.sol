@@ -26,7 +26,7 @@ contract Remittance is Stoppable {
 
     }
 
-    function remittance(address _recipient, bytes32 _passwordHash, uint _availableBlocks)
+    function remit(address _recipient, bytes32 _passwordHash, uint _availableBlocks)
     external
     payable
     {
@@ -54,9 +54,8 @@ contract Remittance is Stoppable {
     {
         bytes32 passHash = hashForPassword(_recipient, _password);
         RemittanceStruct memory remittance = remittances[passHash];
-        uint withdrawalAmount =remittance.remitAmount;
+        uint withdrawalAmount = remittance.remitAmount;
 
-        require(remittance.receiver == _recipient);
         require(remittance.expirationBlock >= block.number);
         require(withdrawalAmount!=0);
 
