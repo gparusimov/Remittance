@@ -15,10 +15,10 @@ contract Remittance is Stoppable {
     mapping(bytes32 => RemittanceStruct) public remittances;
     uint public maxDeadlineBlocks = 30;
 
-    event LogRemittance(address _reciever, uint _availableBlocks, uint _amount);
+    event LogRemit(address _reciever, uint _availableBlocks, uint _amount);
     event LogWithdraw(address reciever, uint amount);
     event LogKill(address indexed owner);
-    event LogAmountBack(uint claimAmount);
+    event LogAmountBack(address sender, uint claimAmount);
 
     constructor()
     public
@@ -43,7 +43,7 @@ contract Remittance is Stoppable {
             expirationBlock: block.number + _availableBlocks
             });
 
-        emit LogRemittance(_recipient, _availableBlocks, msg.value);
+        emit LogRemit(_recipient, _availableBlocks, msg.value);
     }
 
     function withdraw(address _recipient, string _password)
@@ -61,7 +61,7 @@ contract Remittance is Stoppable {
 
         remittance.remitAmount = 0;
 
-        emit LogWithdraw(msg.sender, withdrawalAmount);
+        emit LogWithdraw(remittance.receiver, withdrawalAmount);
         remittance.receiver.transfer(withdrawalAmount);
         return true;
     }
@@ -79,7 +79,7 @@ contract Remittance is Stoppable {
 
         remittance.remitAmount = 0;
 
-        emit LogAmountBack(claimAmount);
+        emit LogAmountBack(msg.sender, claimAmount);
         remittance.sender.transfer(claimAmount);
         return true;
     }
