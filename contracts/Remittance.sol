@@ -15,10 +15,10 @@ contract Remittance is Stoppable {
     mapping(bytes32 => RemittanceStruct) public remittances;
     uint public maxDeadlineBlocks = 30;
 
-    event LogRemit(address _reciever, uint _availableBlocks, uint _amount);
-    event LogWithdraw(address reciever, uint amount);
+    event LogRemit(address  indexed _reciever, uint _availableBlocks, uint _amount);
+    event LogWithdraw(address indexed reciever, uint amount);
     event LogKill(address indexed owner);
-    event LogAmountBack(address sender, uint claimAmount);
+    event LogAmountBack(address  indexed sender, uint claimAmount);
 
     constructor()
     public
@@ -46,13 +46,13 @@ contract Remittance is Stoppable {
         emit LogRemit(_recipient, _availableBlocks, msg.value);
     }
 
-    function withdraw(address _recipient, string _password)
+    function withdraw(string _password)
     onlyIfRunning
     external
     payable
     returns(bool)
     {
-        bytes32 passHash = hashForPassword(_recipient, _password);
+        bytes32 passHash = hashForPassword(address(this), _password);
         RemittanceStruct memory remittance = remittances[passHash];
         uint withdrawalAmount = remittance.remitAmount;
 
@@ -84,11 +84,11 @@ contract Remittance is Stoppable {
         return true;
     }
 
-    function hashForPassword(address _recipient, string _password)
+    function hashForPassword(address _contract, string _password)
     pure
     public
     returns (bytes32 hashedOutput)
     {
-        return keccak256(_recipient, _password);
+        return keccak256(_contract, _password);
     }
 }

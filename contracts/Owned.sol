@@ -32,7 +32,7 @@ contract Owned {
 
     function getOwner()
     public
-    constant
+    view
     returns(address) {
         return owner;
     }
