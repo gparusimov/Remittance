@@ -10,7 +10,7 @@ contract('Remittance', function(accounts) {
     var passwordHash;
     var passwordHash2;
     var expirationBlock = 25;
-    const status =1 ;
+    const status = 1;
     beforeEach(function() {
         return Remittance.new({ from: owner }).then(function(_instance) {
             instance = _instance;
