@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "assert-plus": "^1.0.0",
-    "ganache-cli": "6.0.3",
+    "ganache-cli": "6.12.2",
     "mocha": "^5.0.0"
   }
 }
